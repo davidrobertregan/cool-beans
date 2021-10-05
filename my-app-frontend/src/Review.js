@@ -2,11 +2,10 @@
 function Review ({ review, onDelete }) {
 
     function handleDelete() {
+        onDelete(review)
         fetch(`http://localhost:9292/reviews/${review.id}`, {
             method: "DELETE"
         })
-        .then(resp => resp.json())
-        .then(() => onDelete(review));
     }
 
     return (
