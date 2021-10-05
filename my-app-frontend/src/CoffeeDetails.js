@@ -3,8 +3,9 @@ import { useParams } from 'react-router-dom';
 
 function CoffeeDetails () {
     const [coffee, setCoffee] = useState({});
+    const [roaster, setRoaster] = useState("")
 
-    const { name, image, roaster } = coffee
+    const { name, image } = coffee
     const id = useParams().id;
    
  useEffect(() => {
@@ -12,10 +13,11 @@ function CoffeeDetails () {
           .then((r) => r.json())
           .then((coffee) => {
             setCoffee(coffee);
+            setRoaster(coffee.roaster.name)
           });
       }, [id]);
-
-    return (
+    
+      return (
         <>
         <h2>{name}</h2>
         <h3>{roaster}</h3>
