@@ -11,7 +11,8 @@ function CoffeeContainer() {
 
     return (
         <div>
-            <CoffeeList coffee = {coffee}/>  
+            <CoffeeList coffee = {coffee}/> 
+            <CoffeeDetails /> 
         </div>
     )
 }

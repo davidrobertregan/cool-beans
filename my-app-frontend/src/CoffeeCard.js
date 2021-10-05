@@ -1,6 +1,6 @@
 function CoffeeCard({ coffee }) {
     
-    const { name, image, roaster } = coffee
+    const { name, image, roaster, rating } = coffee
     
     return(
         <div className="coffee-card">
