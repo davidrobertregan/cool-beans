@@ -1,24 +1,25 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom';
 
 function CoffeeDetails () {
-    const [coffeeItem, setCoffeeItem] = useState({});
+    const [coffee, setCoffee] = useState({});
 
-    const { name, image, roaster, reveiws } = coffeeItem
+    const { name, image, roaster } = coffee
+    const id = useParams().id;
    
  useEffect(() => {
-        fetch(`/${id}`)
+        fetch(`http://localhost:9292/coffees/${id}`)
           .then((r) => r.json())
-          .then((coffeeItem) => {
-            setCoffeeItem(coffeeItem);
+          .then((coffee) => {
+            setCoffee(coffee);
           });
       }, [id]);
 
     return (
         <>
         <h2>{name}</h2>
-        <h3>{roaster.name}</h3>
-        <div><img src={image} alt={name}/></div>
-        <div>{reviews}</div>
+        <h3>{roaster}</h3>
+        <img src={image} alt={name}/>
         </>
     )     
 }

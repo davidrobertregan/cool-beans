@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react'
 import CoffeeList from "./CoffeeList"
+import CoffeeDetails from "./CoffeeDetails"
+import { Route, Switch } from 'react-router-dom';
+
 function CoffeeContainer() {
     const [coffee, setCoffee] = useState([])
 
@@ -11,8 +14,14 @@ function CoffeeContainer() {
 
     return (
         <div>
-            <CoffeeList coffee = {coffee}/> 
-            <CoffeeDetails /> 
+          <Switch>   
+            <Route path="/coffees/:id">
+                <CoffeeDetails />
+            </Route>
+            <Route path="/">
+                <CoffeeList coffee = {coffee}/> \
+            </Route>
+         </Switch>
         </div>
     )
 }
