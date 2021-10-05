@@ -7,6 +7,8 @@ function CoffeeDetails () {
     const [roaster, setRoaster] = useState("")
     const [average, setAverage] = useState("")
     const [reviews, setReviews] = useState([])
+    const [toggle, setToggle] = useState(true)
+
     const [formData, setFormData] = useState ({
         content:"",
         rating:""
@@ -17,7 +19,7 @@ function CoffeeDetails () {
     let history = useHistory();
 
     const coffeeReviews = reviews.map(item => 
-        <Review key={item.id} review={item} onDelete={handleDelete}/>)
+        <Review key={item.id} review={item} onDelete={handleDelete} toggle = {toggle} setToggle = {setToggle}/>)
    
 useEffect(() => {
         fetch(`http://localhost:9292/coffees/${id}`)
@@ -42,15 +44,11 @@ useEffect(() => {
       .then((reviews) => {
         setReviews(reviews);
       });
-  }, [id]);
+  }, [id, toggle]);
 
   function handleDelete(deletedReview) {
     const updatedReviews = reviews.filter(item => item.id !== deletedReview.id)
     setReviews(updatedReviews)
-  }
-
-  function handleAddReview(newReview) {
-        setReviews([...reviews, newReview])
   }
 
   function handleChange(event) {
@@ -78,7 +76,7 @@ function handleSubmit(event) {
         body: JSON.stringify(newReview),
       })
         .then((r) => r.json())
-        .then(handleAddReview(newReview));
+        .then(setToggle(!toggle));
     }
 
                  
