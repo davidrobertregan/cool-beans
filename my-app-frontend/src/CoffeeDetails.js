@@ -13,7 +13,7 @@ function CoffeeDetails () {
     let history = useHistory();
 
     const coffeeReviews = reviews.map(item => 
-        <Review key={item.id} review={item}/>)
+        <Review key={item.id} review={item} onDelete={handleDelete}/>)
    
 useEffect(() => {
         fetch(`http://localhost:9292/coffees/${id}`)
@@ -40,7 +40,11 @@ useEffect(() => {
       });
   }, [id]);
 
-                    
+  function handleDelete(deletedReview) {
+    const updatedReviews = reviews.filter(item => item.id !== deletedReview.id)
+    setReviews(updatedReviews)
+  }
+                 
       return (
         <>
         <h2>Coffee: {name}</h2>
