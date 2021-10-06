@@ -38,7 +38,7 @@ useEffect(() => {
       });
   }, [id]);
 
-  useEffect(() => {
+useEffect(() => {
     fetch(`http://localhost:9292/coffees/${id}/reviews`)
       .then((r) => r.json())
       .then((reviews) => {
@@ -79,6 +79,7 @@ function handleSubmit(event) {
         .then(setToggle(!toggle));
     }
 
+                 
       return (
         <>
         <h2>Coffee: {name}</h2>

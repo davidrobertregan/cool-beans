@@ -5,22 +5,18 @@ function Review ({ review, onDelete, toggle, setToggle }) {
         content:"",
         rating:""
     });
-
     function handleDelete() {
         onDelete(review)
         fetch(`http://localhost:9292/reviews/${review.id}`, {
             method: "DELETE"
         })
     }
-
     function handleEdit(event) {
             event.preventDefault()
-        
               const editReview = {
                 content: formData.content,
                 rating: formData.rating
               };
-        
               fetch(`http://localhost:9292/reviews/${review.id}`, {
                 method: "PATCH",
                 headers: {
@@ -35,27 +31,22 @@ function Review ({ review, onDelete, toggle, setToggle }) {
                     rating:""
                 });
             }
-
         function handleChange(event) {
             setFormData({
                 ...formData,
                 [event.target.name]: event.target.value,
             });
         }
-
     return (
         <>
         <p>{review.drinker.name} says: "{review.content}" Rating: {"⭐".repeat(review.rating)}</p>
         <form onSubmit = {handleEdit}>
             <input type = "text" value={formData.content} onChange={handleChange} name="content"></input>
-            <input type = "number" value={formData.rating} onChange={handleChange} name="rating"></input>  
+            <input type = "number" value={formData.rating} onChange={handleChange} name="rating"></input>
             <button>Edit Review</button>
         </form>
-      
         <button onClick = {handleDelete}>Delete Review</button>
         </>
-        
     )
 }
-
 export default Review
