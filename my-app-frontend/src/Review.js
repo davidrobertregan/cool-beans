@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 
 function Review ({ review, onDelete, toggle, setToggle }) {
+    const [isEditing, setIsEditing] = useState(false);
     const [formData, setFormData] = useState ({
-        content:"",
-        rating:""
+        content: review.content,
+        rating: review.rating
     });
     function handleDelete() {
         onDelete(review)
@@ -26,10 +27,7 @@ function Review ({ review, onDelete, toggle, setToggle }) {
               })
                 .then((r) => r.json())
                 .then(setToggle(!toggle));
-                setFormData({
-                    content:"",
-                    rating:""
-                });
+                setIsEditing((isEditing) => !isEditing);
             }
         function handleChange(event) {
             setFormData({
@@ -38,15 +36,26 @@ function Review ({ review, onDelete, toggle, setToggle }) {
             });
         }
     return (
-        <>
-        <p>{review.drinker.name} says: "{review.content}" Rating: {"⭐".repeat(review.rating)}</p>
+    <>
+        {isEditing ?
         <form onSubmit = {handleEdit}>
             <input type = "text" value={formData.content} onChange={handleChange} name="content"></input>
             <input type = "number" value={formData.rating} onChange={handleChange} name="rating"></input>
-            <button>Edit Review</button>
+            <button>Save Review</button>
         </form>
-        <button onClick = {handleDelete}>Delete Review</button>
-        </>
+        :
+        <div>
+        <p>{review.drinker.name} says: "{review.content}" Rating: {"⭐".repeat(review.rating)}</p>
+            <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
+                <span role="img" aria-label="edit">
+                    ✏️
+                </span>
+            </button> 
+        <button onClick = {handleDelete}>🗑</button>
+        </div>
+        }
+        
+    </>
     )
 }
-export default Review
+export default Review     
