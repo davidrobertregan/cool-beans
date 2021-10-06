@@ -40,7 +40,7 @@ function Review ({ review, onDelete, toggle, setToggle }) {
         {isEditing ?
         <form onSubmit = {handleEdit}>
             <input type = "text" value={formData.content} onChange={handleChange} name="content"></input>
-            <input type = "number" value={formData.rating} onChange={handleChange} name="rating"></input>
+            <input type = "number" value={formData.rating}  min="0" max="5" onChange={handleChange} name="rating"></input>
             <button>Save Review</button>
         </form>
         :

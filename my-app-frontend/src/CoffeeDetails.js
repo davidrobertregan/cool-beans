@@ -77,9 +77,12 @@ function handleSubmit(event) {
       })
         .then((r) => r.json())
         .then(setToggle(!toggle));
+        setFormData({
+          content:"",
+          rating:""
+      });
     }
-
-                 
+                
       return (
         <>
         <h2>Coffee: {name}</h2>
@@ -89,7 +92,7 @@ function handleSubmit(event) {
         <div>User Reviews: {coffeeReviews}</div>
         <form onSubmit={handleSubmit}>
             <input type="text" placeholder ="Write Review Here!" value={formData.content} onChange={handleChange} name="content"></input>
-            <input type="number" placeholder ="Rating" value={formData.rating} onChange={handleChange} name="rating"></input>
+            <input type="number" placeholder ="Rating" value={formData.rating} min="0" max="5" onChange={handleChange} name="rating"></input>
             <button type="submit" >Submit Review</button>
         </form>
         <button onClick={() => history.goBack()}>
