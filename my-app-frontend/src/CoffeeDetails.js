@@ -85,7 +85,7 @@ function handleSubmit(event) {
         <h2>Coffee: {name}</h2>
         <h3>Roaster: {roaster}</h3>
         <img src={image} alt={name}/>
-        <h4>Overall Rating: {average}</h4>
+        <h4>Overall Rating: {"⭐".repeat(Math.round(average))}</h4>
         <div>User Reviews: {coffeeReviews}</div>
         <form onSubmit={handleSubmit}>
             <input type="text" placeholder ="Write Review Here!" value={formData.content} onChange={handleChange} name="content"></input>

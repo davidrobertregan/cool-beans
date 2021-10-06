@@ -23,7 +23,7 @@ function CoffeeCard({ coffee }) {
             <Link to={`roasters/${roaster.id}`}>
             <h5>Roaster: {roaster.name}</h5>
             </Link>
-            <h5>Rating: {average}</h5>
+            <h5>Rating: {"⭐".repeat(Math.round(average))}</h5>
         </div>
     )
 }

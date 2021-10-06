@@ -45,7 +45,7 @@ function Review ({ review, onDelete, toggle, setToggle }) {
 
     return (
         <>
-        <p>{review.drinker.name} says: "{review.content}" Rating: {review.rating}</p>
+        <p>{review.drinker.name} says: "{review.content}" Rating: {"⭐".repeat(review.rating)}</p>
         <form onSubmit = {handleEdit}>
             <input type = "text" value={formData.content} onChange={handleChange} name="content"></input>
             <input type = "number" value={formData.rating} onChange={handleChange} name="rating"></input>  
