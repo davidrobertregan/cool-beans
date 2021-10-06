@@ -79,8 +79,6 @@ function handleSubmit(event) {
         .then(setToggle(!toggle));
     }
 
-    // const averageRating = Math.round(average)
-
       return (
         <>
         <h2>Coffee: {name}</h2>
