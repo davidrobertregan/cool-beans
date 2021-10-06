@@ -79,7 +79,6 @@ function handleSubmit(event) {
         .then(setToggle(!toggle));
     }
 
-                 
       return (
         <>
         <h2>Coffee: {name}</h2>
