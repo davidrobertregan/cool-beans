@@ -20,7 +20,7 @@ function CoffeeCard({ coffee }) {
             <Link to={`/coffees/${id}`}>
             <img src={image} alt={name} style={{width: '150px'}}/>
             </Link>
-            <Link to={`coffee/${id}/roaster`}>
+            <Link to={`roasters/${roaster.id}`}>
             <h5>Roaster: {roaster.name}</h5>
             </Link>
             <h5>Rating: {average}</h5>
