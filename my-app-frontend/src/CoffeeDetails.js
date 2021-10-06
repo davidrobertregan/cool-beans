@@ -79,7 +79,8 @@ function handleSubmit(event) {
         .then(setToggle(!toggle));
     }
 
-                 
+    // const averageRating = Math.round(average)
+
       return (
         <>
         <h2>Coffee: {name}</h2>
@@ -92,7 +93,7 @@ function handleSubmit(event) {
             <input type="number" placeholder ="Rating" value={formData.rating} onChange={handleChange} name="rating"></input>
             <button type="submit" >Submit Review</button>
         </form>
-        <button onClick={() => history.push("/")}>
+        <button onClick={() => history.goBack()}>
          ⬅ Back
         </button>
         </>
