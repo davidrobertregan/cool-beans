@@ -24,7 +24,7 @@ useEffect(() => {
         <h2>{name}</h2>
         <a href={url}><img src={image} alt={name}/></a>
         <h3>Locations: {location}</h3>
-        <button onClick={() => history.push("/")}>
+        <button onClick={() => history.goBack()}>
          ⬅ Back
         </button>
         <CoffeeList coffee = {filteredCoffee}/>

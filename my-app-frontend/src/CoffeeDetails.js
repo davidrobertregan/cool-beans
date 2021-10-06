@@ -92,7 +92,7 @@ function handleSubmit(event) {
             <input type="number" placeholder ="Rating" value={formData.rating} onChange={handleChange} name="rating"></input>
             <button type="submit" >Submit Review</button>
         </form>
-        <button onClick={() => history.push("/")}>
+        <button onClick={() => history.goBack()}>
          ⬅ Back
         </button>
         </>
