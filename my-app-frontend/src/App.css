@@ -41,3 +41,8 @@
   transform: scale(1.05);
 }
 
+.roaster-card:hover {
+  transform: scale(1.05);
+}
+
+

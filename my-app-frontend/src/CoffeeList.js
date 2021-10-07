@@ -9,7 +9,7 @@ function CoffeeList({ coffee }) {
 
     return (
         <div >
-            <CardGroup className="justify-content-center"id="coffee-list">
+            <CardGroup className="justify-content-center" id="coffee-list">
             {coffeeCards}
             </CardGroup>
         </div>

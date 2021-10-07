@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from 'react-router-dom';
 import CoffeeList from "./CoffeeList";
+import Image from 'react-bootstrap/Image'
 
 function RoasterDetails ({ coffee }) {
     const [roaster, setRoaster] = useState({})
@@ -21,13 +22,12 @@ useEffect(() => {
 
       return (
         <>
-        <h2>{name}</h2>
-        <a href={url}><img src={image} alt={name}/></a>
-        <h3>Locations: {location}</h3>
+        <a href={url}><Image src={image} thumbnail alt={name} style={{maxHeight: '400px', objectFit: 'contain', padding: '10px'}}/></a>
+        <h3>{location}</h3>
+        <CoffeeList coffee = {filteredCoffee}/>       
         <button onClick={() => history.goBack()}>
          ⬅ Back
         </button>
-        <CoffeeList coffee = {filteredCoffee}/>
         </>
     )     
 }

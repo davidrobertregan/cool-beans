@@ -85,12 +85,13 @@ function handleSubmit(event) {
                 
       return (
         <>
-        <h2>Coffee: {name}</h2>
-        <h3>Roaster: {roaster}</h3>
-        <img src={image} alt={name}/>
-        <h4>Overall Rating: {"⭐".repeat(Math.round(average))}</h4>
-        <div>User Reviews: {coffeeReviews}</div>
-        <form onSubmit={handleSubmit}>
+        <h2>{name}</h2>
+        <img src={image} alt={name} style={{maxHeight: '400px'}}/>
+        <h4>{roaster}</h4>
+        <h5>Overall Rating: {"⭐".repeat(Math.round(average))}</h5>
+        <h5>User Reviews:</h5>
+        {coffeeReviews}
+        <form onSubmit={handleSubmit} style={{padding: '20px'}}>
             <input type="text" placeholder ="Write Review Here!" value={formData.content} onChange={handleChange} name="content"></input>
             <input type="number" placeholder ="Rating" value={formData.rating} min="0" max="5" onChange={handleChange} name="rating"></input>
             <button type="submit" >Submit Review</button>

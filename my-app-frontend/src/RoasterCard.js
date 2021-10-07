@@ -6,7 +6,7 @@ function RoasterCard({ roaster }) {
 
     return(
         <CardGroup style={{ padding:'10px'}}>
-        <Card style={{ width: '18rem', boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2)'}} className="coffee-card">
+        <Card style={{ width: '18rem', boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2)'}} className="roaster-card">
         <Card.Header>
             <Card.Title>{name}</Card.Title> 
         </Card.Header>
