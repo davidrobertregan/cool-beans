@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Col, Row, Button, Card, ButtonGroup } from "react-bootstrap"
+import { Form, Col, Row, Button, Card, ButtonGroup, FormControl, FloatingLabel } from "react-bootstrap"
 
 function Review ({ review, onDelete, toggle, setToggle }) {
     const [isEditing, setIsEditing] = useState(false);
@@ -38,32 +38,42 @@ function Review ({ review, onDelete, toggle, setToggle }) {
         }
     return (
     <div>
-        {isEditing ?
-        <form onSubmit = {handleEdit}>
-            <input type = "text" value={formData.content} onChange={handleChange} name="content"></input>
-            <input type = "number" value={formData.rating}  min="0" max="5" onChange={handleChange} name="rating"></input>
-            <button>Save Review</button>
-        </form>
-        :
         <Card style={{ maxWidth:"35em"}}>
             <Row>
                 <Col md="auto">
                     <h6>{review.drinker.name} {"⭐".repeat(review.rating)}</h6>
                 </Col>
             </Row>
+            {isEditing ?
+            <Form onSubmit = {handleEdit}>
+                <Row>
+                    <Col>
+                        <FormControl type = "text" value={formData.content} onChange={handleChange} name="content" />
+                    </Col>
+                    <Col md="auto">
+                        <Form.Label>⭐️</Form.Label>
+                    </Col>
+                    <Col md="auto">
+                        <FormControl type = "number" value={formData.rating}  min="0" max="5" onChange={handleChange} name="rating" />
+                    </Col>
+                    <Col md="auto">
+                        <Button variant="light" type="submit">✅</Button>
+                    </Col>
+                </Row>
+            </Form>
+        :
             <Row>
                 <Col md="auto">
                     <p>"{review.content}"</p>
                 </Col>
-                <Col md="auto">
+                <Col>
                     <ButtonGroup>
                         <Button variant="light" onClick={() => setIsEditing((isEditing) => !isEditing)}>✏️</Button> 
                         <Button variant="light" onClick = {handleDelete}>🗑</Button>
                     </ButtonGroup>
                 </Col>
-            </Row>
+            </Row>}
         </Card>
-        }
         
     </div>
     )
