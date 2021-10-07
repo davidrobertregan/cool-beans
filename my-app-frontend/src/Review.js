@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Form, Col, Row, Button, Card, ButtonGroup } from "react-bootstrap"
 
 function Review ({ review, onDelete, toggle, setToggle }) {
     const [isEditing, setIsEditing] = useState(false);
@@ -36,7 +37,7 @@ function Review ({ review, onDelete, toggle, setToggle }) {
             });
         }
     return (
-    <>
+    <div>
         {isEditing ?
         <form onSubmit = {handleEdit}>
             <input type = "text" value={formData.content} onChange={handleChange} name="content"></input>
@@ -44,18 +45,27 @@ function Review ({ review, onDelete, toggle, setToggle }) {
             <button>Save Review</button>
         </form>
         :
-        <div>
-        <p>{review.drinker.name} says: "{review.content}" Rating: {"⭐".repeat(review.rating)}</p>
-            <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
-                <span role="img" aria-label="edit">
-                    ✏️
-                </span>
-            </button> 
-        <button onClick = {handleDelete}>🗑</button>
-        </div>
+        <Card style={{ maxWidth:"35em"}}>
+            <Row>
+                <Col md="auto">
+                    <h6>{review.drinker.name} {"⭐".repeat(review.rating)}</h6>
+                </Col>
+            </Row>
+            <Row>
+                <Col md="auto">
+                    <p>"{review.content}"</p>
+                </Col>
+                <Col md="auto">
+                    <ButtonGroup>
+                        <Button variant="light" onClick={() => setIsEditing((isEditing) => !isEditing)}>✏️</Button> 
+                        <Button variant="light" onClick = {handleDelete}>🗑</Button>
+                    </ButtonGroup>
+                </Col>
+            </Row>
+        </Card>
         }
         
-    </>
+    </div>
     )
 }
 export default Review     
