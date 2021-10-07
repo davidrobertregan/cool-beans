@@ -90,7 +90,7 @@ function handleSubmit(event) {
         <img src={image} alt={name} style={{maxHeight: '400px'}}/>
         <h4>{roaster}</h4>
         <h5>Overall Rating: {"⭐".repeat(Math.round(average))}</h5>
-        <Button onClick={() => history.goBack()}>
+        <Button variant="light" onClick={() => history.goBack()}>
          ⬅ Back
         </Button>
         <h4>Reviews</h4>
