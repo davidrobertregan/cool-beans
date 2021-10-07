@@ -38,7 +38,7 @@ function Review ({ review, onDelete, toggle, setToggle }) {
         }
     return (
     <>
-        <Card style={{ maxWidth:"35em"}}>
+        <Card style={{ maxWidth:"35em", margin: ".25em"}}>
             <Row>
                 <Col md="auto">
                     <h6>{review.drinker.name} {"⭐".repeat(review.rating)}</h6>

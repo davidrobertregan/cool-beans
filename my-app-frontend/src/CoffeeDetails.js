@@ -85,25 +85,25 @@ function handleSubmit(event) {
     }
                 
       return (
-        <Container fluid >
+        <Container fluid style={{padding:"2em"}}>
         <h2>{name}</h2>
         <img src={image} alt={name} style={{maxHeight: '400px'}}/>
-        <h4>{roaster}</h4>
-        <h5>Overall Rating: {"⭐".repeat(Math.round(average))}</h5>
+        <h5>{"⭐".repeat(Math.round(average))}</h5>
+        <h4><em>from {roaster}</em></h4>
         <Button variant="light" onClick={() => history.goBack()}>
          ⬅ Back
         </Button>
-        <h4>Reviews</h4>
-        <Container>
+        <Container style={{padding: "2em"}}>
         <Row className="justify-content-md-center">
+          <h4>Reviews</h4>
           {coffeeReviews}
-        <Card style={{ maxWidth:"35em"}}>
+        <Card style={{ maxWidth:"35em", margin: "2em"}}>
           <Row>
             <Col md="auto">
-              <Card.Title>Submit a Review</Card.Title>
+              <Card.Title><em>Submit a Review</em></Card.Title>
             </Col>
           </Row>
-          <Form onSubmit = {handleSubmit}>
+          <Form style={{padding: "1em"}} onSubmit = {handleSubmit}>
                 <Row>
                     <Col>
                         <FormControl type = "text" value={formData.content} onChange={handleChange} name="content" placeholder="Ginny Weasly says..."/>
