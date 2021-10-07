@@ -67,7 +67,7 @@ function Review ({ review, onDelete, toggle, setToggle }) {
                     <p>"{review.content}"</p>
                 </Col>
                 <Col>
-                    <ButtonGroup>
+                    <ButtonGroup style={{float: "right"}}>
                         <Button variant="light" onClick={() => setIsEditing((isEditing) => !isEditing)}>✏️</Button> 
                         <Button variant="light" onClick = {handleDelete}>🗑</Button>
                     </ButtonGroup>
