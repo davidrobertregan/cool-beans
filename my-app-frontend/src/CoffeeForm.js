@@ -2,7 +2,7 @@ import {Form, FormControl, Button, Row, Col} from "react-bootstrap"
 import {useState} from "react"
 
 
-function CoffeeForm( {handleSubmit, formData, setFormData}){
+function CoffeeForm( {handleFetch, formData, setFormData}){
 
     function handleChange(event) {
         setFormData({
@@ -12,7 +12,7 @@ function CoffeeForm( {handleSubmit, formData, setFormData}){
     }
 
     return (
-        <Form style={{padding: "1em"}} onSubmit = {handleSubmit}>
+        <Form style={{padding: "1em"}} onSubmit = {handleFetch}>
             <Row>
                 <Col>
                     <FormControl type = "text" value={formData.content} onChange={handleChange} name="content" placeholder="Ginny Weasly says..."/>

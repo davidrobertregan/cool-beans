@@ -99,7 +99,7 @@ function handleSubmit(event) {
                   </Col>
                 </Row>
 
-                <CoffeeForm handleSubmit={handleSubmit} formData={formDataNew} setFormData={setFormDataNew}/>
+                <CoffeeForm handleFetch={handleSubmit} formData={formDataNew} setFormData={setFormDataNew}/>
 
               </Card>
             </Row>

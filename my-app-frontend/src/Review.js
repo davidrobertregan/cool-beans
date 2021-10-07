@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Form, Col, Row, Button, Card, ButtonGroup, FormControl, FloatingLabel, Container, CardGroup } from "react-bootstrap"
+import CoffeeForm from "./CoffeeForm"
 
 function Review ({ review, onDelete, toggle, setToggle }) {
     const [isEditing, setIsEditing] = useState(false);
-    const [formData, setFormData] = useState ({
+    const [formDataEdit, setFormDataEdit] = useState ({
         content: review.content,
         rating: review.rating
     });
@@ -14,28 +15,23 @@ function Review ({ review, onDelete, toggle, setToggle }) {
         })
     }
     function handleEdit(event) {
-            event.preventDefault()
-              const editReview = {
-                content: formData.content,
-                rating: formData.rating
-              };
-              fetch(`http://localhost:9292/reviews/${review.id}`, {
+        event.preventDefault()
+        const editReview = {
+            content: formDataEdit.content,
+            rating: formDataEdit.rating
+            };
+            fetch(`http://localhost:9292/reviews/${review.id}`, {
                 method: "PATCH",
                 headers: {
-                  "Content-Type": "application/json",
+                "Content-Type": "application/json",
                 },
                 body: JSON.stringify(editReview),
-              })
+                })
                 .then((r) => r.json())
                 .then(setToggle(!toggle));
                 setIsEditing((isEditing) => !isEditing);
-            }
-        function handleChange(event) {
-            setFormData({
-                ...formData,
-                [event.target.name]: event.target.value,
-            });
-        }
+    }
+
     return (
     <>
         <Card style={{ maxWidth:"35em", margin: ".25em"}}>
@@ -45,22 +41,7 @@ function Review ({ review, onDelete, toggle, setToggle }) {
                 </Col>
             </Row>
             {isEditing ?
-            <Form onSubmit = {handleEdit}>
-                <Row>
-                    <Col>
-                        <FormControl type = "text" value={formData.content} onChange={handleChange} name="content" />
-                    </Col>
-                    <Col md="auto">
-                        <Form.Label>⭐️</Form.Label>
-                    </Col>
-                    <Col md="auto">
-                        <FormControl type = "number" value={formData.rating}  min="0" max="5" onChange={handleChange} name="rating" />
-                    </Col>
-                    <Col md="auto">
-                        <Button variant="light" type="submit">✅</Button>
-                    </Col>
-                </Row>
-            </Form>
+            <CoffeeForm handleFetch={handleEdit} formData={formDataEdit} setFormData={setFormDataEdit} />
         :
             <Row>
                 <Col md="auto">
@@ -79,3 +60,20 @@ function Review ({ review, onDelete, toggle, setToggle }) {
     )
 }
 export default Review     
+
+// <Form onSubmit={handleEdit}>
+{/* <Row>
+<Col>
+    <FormControl type = "text" value={formData.content} onChange={handleChange} name="content" />
+</Col>
+<Col md="auto">
+    <Form.Label>⭐️</Form.Label>
+</Col>
+<Col md="auto">
+    <FormControl type = "number" value={formData.rating}  min="0" max="5" onChange={handleChange} name="rating" />
+</Col>
+<Col md="auto">
+    <Button variant="light" type="submit">✅</Button>
+</Col>
+</Row>
+</Form> */}
