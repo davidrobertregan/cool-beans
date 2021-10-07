@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
+import { Card, CardGroup } from 'react-bootstrap'
 
 function CoffeeCard({ coffee }) {
     const [average, setAverage] = useState("")
@@ -15,16 +16,22 @@ function CoffeeCard({ coffee }) {
       }, [id]);
     
     return(
-        <div className="coffee-card">
-            <h4>Coffee: {name}</h4>
+        <CardGroup style={{ padding:'10px'}}> 
+        <Card style={{ width: '18rem', boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2)'}} className="coffee-card"  >
+          <Card.Header>
+            <Card.Title>{name}</Card.Title> 
+          </Card.Header>
             <Link to={`/coffees/${id}`}>
-            <img src={image} alt={name} style={{width: '150px'}}/>
+            <Card.Img variant="top" src={image} style={{maxHeight: '200px', objectFit: 'contain', padding: '10px'}}/>
             </Link>
+            <Card.Body> 
             <Link to={`roasters/${roaster.id}`}>
-            <h5>Roaster: {roaster.name}</h5>
+            <Card.Text>Roaster: {roaster.name}</Card.Text>
             </Link>
-            <h5>Rating: {"⭐".repeat(Math.round(average))}</h5>
-        </div>
+            <Card.Text>Rating: {"⭐".repeat(Math.round(average))}</Card.Text>
+            </Card.Body> 
+          </Card>
+        </CardGroup>
     )
 }
 

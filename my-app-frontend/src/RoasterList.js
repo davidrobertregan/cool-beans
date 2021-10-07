@@ -1,5 +1,6 @@
 import React from "react"
 import RoasterCard from "./RoasterCard"
+import CardGroup from 'react-bootstrap/CardGroup'
 
 function RoasterList({ roasters }) {
 
@@ -8,7 +9,9 @@ function RoasterList({ roasters }) {
 
     return (
         <div >
+            <CardGroup className="justify-content-center"id="coffee-list">
             {roasterCards}
+            </CardGroup>
         </div>
     )
 }

@@ -1,15 +1,23 @@
+import { Card, CardGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 function RoasterCard({ roaster }) {
-    const { name, image, id } = roaster
+    const { name, image, id, location } = roaster
 
     return(
-        <div className="roaster-card">
-            <h4>{name}</h4>
+        <CardGroup style={{ padding:'10px'}}>
+        <Card style={{ width: '18rem', boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2)'}} className="coffee-card">
+        <Card.Header>
+            <Card.Title>{name}</Card.Title> 
+        </Card.Header>
             <Link to={`/roasters/${id}`}>
-            <img src={image} alt={name} style={{width: '150px'}}/>
+              <Card.Img src={image} alt={name} style={{maxHeight: '150px', objectFit: 'contain', padding: '10px'}}/>
             </Link>
-        </div>
+        <Card.Body>
+            {location}
+        </Card.Body>   
+        </Card>
+        </CardGroup>
     )
 }
 
