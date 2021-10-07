@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Form, Col, Row, Button, Container, ButtonGroup } from "react-bootstrap"
 
 function Review ({ review, onDelete, toggle, setToggle }) {
     const [isEditing, setIsEditing] = useState(false);
@@ -36,7 +37,7 @@ function Review ({ review, onDelete, toggle, setToggle }) {
             });
         }
     return (
-    <>
+    <div>
         {isEditing ?
         <form onSubmit = {handleEdit}>
             <input type = "text" value={formData.content} onChange={handleChange} name="content"></input>
@@ -44,18 +45,22 @@ function Review ({ review, onDelete, toggle, setToggle }) {
             <button>Save Review</button>
         </form>
         :
-        <div>
-        <p>{review.drinker.name} says: "{review.content}" Rating: {"⭐".repeat(review.rating)}</p>
-            <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
-                <span role="img" aria-label="edit">
-                    ✏️
-                </span>
-            </button> 
-        <button onClick = {handleDelete}>🗑</button>
-        </div>
+        <Container fluid="sm">
+            <Row>
+                <Col>
+                    <p>{review.drinker.name}: "{review.content}" {"⭐".repeat(review.rating)}</p>
+                </Col>
+                <Col>
+                    <ButtonGroup>
+                        <Button variant="light" onClick={() => setIsEditing((isEditing) => !isEditing)}>✏️</Button> 
+                        <Button variant="light" onClick = {handleDelete}>🗑</Button>
+                    </ButtonGroup>
+                </Col>
+            </Row>
+        </Container>
         }
         
-    </>
+    </div>
     )
 }
 export default Review     
