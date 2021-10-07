@@ -1,6 +1,4 @@
 import {Form, FormControl, Button, Row, Col} from "react-bootstrap"
-import {useState} from "react"
-
 
 function CoffeeForm( {handleFetch, formData, setFormData}){
 

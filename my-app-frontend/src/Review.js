@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Col, Row, Button, Card, ButtonGroup, FormControl, FloatingLabel, Container, CardGroup } from "react-bootstrap"
+import { Col, Row, Button, Card, ButtonGroup } from "react-bootstrap"
 import CoffeeForm from "./CoffeeForm"
 
 function Review ({ review, onDelete, toggle, setToggle }) {
@@ -60,20 +60,3 @@ function Review ({ review, onDelete, toggle, setToggle }) {
     )
 }
 export default Review     
-
-// <Form onSubmit={handleEdit}>
-{/* <Row>
-<Col>
-    <FormControl type = "text" value={formData.content} onChange={handleChange} name="content" />
-</Col>
-<Col md="auto">
-    <Form.Label>⭐️</Form.Label>
-</Col>
-<Col md="auto">
-    <FormControl type = "number" value={formData.rating}  min="0" max="5" onChange={handleChange} name="rating" />
-</Col>
-<Col md="auto">
-    <Button variant="light" type="submit">✅</Button>
-</Col>
-</Row>
-</Form> */}
