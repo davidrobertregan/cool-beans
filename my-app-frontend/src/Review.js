@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Col, Row, Button, Container, ButtonGroup } from "react-bootstrap"
+import { Form, Col, Row, Button, Card, ButtonGroup } from "react-bootstrap"
 
 function Review ({ review, onDelete, toggle, setToggle }) {
     const [isEditing, setIsEditing] = useState(false);
@@ -45,19 +45,24 @@ function Review ({ review, onDelete, toggle, setToggle }) {
             <button>Save Review</button>
         </form>
         :
-        <Container fluid="sm">
+        <Card style={{ maxWidth:"35em"}}>
             <Row>
-                <Col>
-                    <p>{review.drinker.name}: "{review.content}" {"⭐".repeat(review.rating)}</p>
+                <Col md="auto">
+                    <h6>{review.drinker.name} {"⭐".repeat(review.rating)}</h6>
                 </Col>
-                <Col>
+            </Row>
+            <Row>
+                <Col md="auto">
+                    <p>"{review.content}"</p>
+                </Col>
+                <Col md="auto">
                     <ButtonGroup>
                         <Button variant="light" onClick={() => setIsEditing((isEditing) => !isEditing)}>✏️</Button> 
                         <Button variant="light" onClick = {handleDelete}>🗑</Button>
                     </ButtonGroup>
                 </Col>
             </Row>
-        </Container>
+        </Card>
         }
         
     </div>
