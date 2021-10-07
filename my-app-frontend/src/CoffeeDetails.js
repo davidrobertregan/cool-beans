@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from 'react-router-dom';
 import {Form, FormControl, Button, Row, Col, Card, Container} from "react-bootstrap"
 import Review from './Review'
+import CoffeeForm from './CoffeeForm'
 
 function CoffeeDetails () {
     const [coffee, setCoffee] = useState({});
@@ -10,14 +11,15 @@ function CoffeeDetails () {
     const [reviews, setReviews] = useState([])
     const [toggle, setToggle] = useState(true)
 
-    const [formData, setFormData] = useState ({
-        content:"",
-        rating:""
-    });
+    const [formDataNew, setFormDataNew] = useState ({
+      content:"",
+      rating:""
+  });
 
-    const { name, image } = coffee
-    const id = useParams().id;
-    let history = useHistory();
+
+  const { name, image } = coffee
+  const id = useParams().id;
+  let history = useHistory();
 
     const coffeeReviews = reviews.map(item => 
         <Review key={item.id} review={item} onDelete={handleDelete} toggle = {toggle} setToggle = {setToggle}/>)
@@ -52,19 +54,12 @@ useEffect(() => {
     setReviews(updatedReviews)
   }
 
-  function handleChange(event) {
-    setFormData({
-        ...formData,
-        [event.target.name]: event.target.value,
-    });
-}
-
 function handleSubmit(event) {
     event.preventDefault()
 
       const newReview = {
-        content: formData.content,
-        rating: formData.rating,
+        content: formDataNew.content,
+        rating: formDataNew.rating,
         drinker_id: 2,
         coffee_id: coffee.id,
       };
@@ -78,7 +73,7 @@ function handleSubmit(event) {
       })
         .then((r) => r.json())
         .then(setToggle(!toggle));
-        setFormData({
+        setFormDataNew({
           content:"",
           rating:""
       });
@@ -103,22 +98,9 @@ function handleSubmit(event) {
                     <Card.Title><em>Submit a Review</em></Card.Title>
                   </Col>
                 </Row>
-                <Form style={{padding: "1em"}} onSubmit = {handleSubmit}>
-                <Row>
-                  <Col>
-                    <FormControl type = "text" value={formData.content} onChange={handleChange} name="content" placeholder="Ginny Weasly says..."/>
-                  </Col>
-                  <Col md="auto">
-                    <Form.Label>⭐️</Form.Label>
-                  </Col>
-                  <Col md="auto">
-                    <FormControl type = "number" value={formData.rating}  min="0" max="5" onChange={handleChange} name="rating" />
-                  </Col>
-                  <Col md="auto">
-                    <Button variant="light" type="submit">✅</Button>
-                  </Col>
-                </Row>
-                </Form>
+
+                <CoffeeForm handleSubmit={handleSubmit} formData={formDataNew} setFormData={setFormDataNew}/>
+
               </Card>
             </Row>
           </Container>

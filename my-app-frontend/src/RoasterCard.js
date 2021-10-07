@@ -11,7 +11,7 @@ function RoasterCard({ roaster }) {
             <Card.Title>{name}</Card.Title> 
         </Card.Header>
             <Link to={`/roasters/${id}`}>
-              <Card.Img src={image} alt={name} style={{maxHeight: '150px', objectFit: 'contain', padding: '10px'}}/>
+                <Card.Img src={image} alt={name} style={{maxHeight: '150px', objectFit: 'contain', padding: '10px'}}/>
             </Link>
         <Card.Body>
             {location}
