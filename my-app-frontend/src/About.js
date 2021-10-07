@@ -6,9 +6,9 @@ function About () {
             <div>
                 <h1>☕ Cool Beans!</h1>
                 <Container className='p-5'>
-                    <h3>"Where's the stove?"</h3>
+                    <h3>It's the little things...</h3>
                     <div>
-                        <p>Nobody likes to realize they forgot something long after they hit the trail. But it's also easy to do! There are so many things to pack and all the gear is usually living on separate lists. Thus the idea for Get Packin' was born: one interactive app for all your gear so you'll never forget anything again! (We make no guarantees)</p>
+                        <p>...that make or break your day. Like the quality of your morning cup of coffee. Life's too short for bad coffee. And so we search with you for the coveted cup. Don't lose heart. It's out there. You just might find it here, at <em>☕️ Cool Beans.</em></p>
                     </div>
                 </Container>
             </div>
