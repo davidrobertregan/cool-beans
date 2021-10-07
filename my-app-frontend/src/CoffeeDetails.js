@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from 'react-router-dom';
-import {Form, FormControl, Button, Row, Col, Card} from "react-bootstrap"
+import {Form, FormControl, Button, Row, Col, Card, Container} from "react-bootstrap"
 import Review from './Review'
 
 function CoffeeDetails () {
@@ -85,14 +85,18 @@ function handleSubmit(event) {
     }
                 
       return (
-        <>
+        <Container fluid >
         <h2>{name}</h2>
         <img src={image} alt={name} style={{maxHeight: '400px'}}/>
         <h4>{roaster}</h4>
         <h5>Overall Rating: {"⭐".repeat(Math.round(average))}</h5>
-        <h5>User Reviews:</h5>
-        {coffeeReviews}
-        {/* old form was here */}
+        <Button onClick={() => history.goBack()}>
+         ⬅ Back
+        </Button>
+        <h4>Reviews</h4>
+        <Container>
+        <Row className="justify-content-md-center">
+          {coffeeReviews}
         <Card style={{ maxWidth:"35em"}}>
           <Row>
             <Col md="auto">
@@ -116,18 +120,10 @@ function handleSubmit(event) {
                 </Row>
             </Form>
             </Card>
-
-        <button onClick={() => history.goBack()}>
-         ⬅ Back
-        </button>
-        </>
+            </Row>
+          </Container>
+      </Container>
     )     
 }
-
-{/*     <form onSubmit={handleSubmit} style={{padding: '20px'}}>
-            <input type="text" placeholder ="Write Review Here!" value={formData.content} onChange={handleChange} name="content"></input>
-            <input type="number" placeholder ="Rating" value={formData.rating} min="0" max="5" onChange={handleChange} name="rating"></input>
-            <button type="submit" >Submit Review</button>
-        </form> */}
 
 export default CoffeeDetails

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Col, Row, Button, Card, ButtonGroup, FormControl, FloatingLabel } from "react-bootstrap"
+import { Form, Col, Row, Button, Card, ButtonGroup, FormControl, FloatingLabel, Container, CardGroup } from "react-bootstrap"
 
 function Review ({ review, onDelete, toggle, setToggle }) {
     const [isEditing, setIsEditing] = useState(false);
@@ -37,7 +37,7 @@ function Review ({ review, onDelete, toggle, setToggle }) {
             });
         }
     return (
-    <div>
+    <>
         <Card style={{ maxWidth:"35em"}}>
             <Row>
                 <Col md="auto">
@@ -75,7 +75,7 @@ function Review ({ review, onDelete, toggle, setToggle }) {
             </Row>}
         </Card>
         
-    </div>
+    </>
     )
 }
 export default Review     
