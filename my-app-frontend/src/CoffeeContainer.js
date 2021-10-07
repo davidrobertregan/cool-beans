@@ -25,26 +25,29 @@ function CoffeeContainer() {
 
     return (
         <div>
-          <Switch>
-            <Route path="/about">   
-                <About />   
-            </Route>
-            <Route path="/coffees/:id">
-                <CoffeeDetails />
-            </Route>
-            <Route path="/roasters/:id">
-                <RoasterDetails coffee = {coffee} />
-            </Route>
-            <Route path="/roasters">
-                <RoasterList roasters = {roasters}/> 
-            </Route>
-            <Route path="/">
-                <CoffeeList coffee = {coffee}/> 
-            </Route>
-            
-         </Switch>
+            <Switch>
+                <Route path="/about">   
+                    <About />   
+                </Route>
+                <Route path="/coffees/:id">
+                    <CoffeeDetails />
+                </Route>
+                <Route path="/roasters/:id">
+                    <RoasterDetails coffee = {coffee} />
+                </Route>
+                <Route path="/roasters">
+                    <RoasterList roasters = {roasters}/> 
+                </Route>
+                <Route path="/">
+                    <CoffeeList coffee = {coffee}/> 
+                </Route>
+                
+            </Switch>
         </div>
     )
 }
 
 export default CoffeeContainer
+
+
+// This is a test!
