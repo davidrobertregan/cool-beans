@@ -21,9 +21,7 @@ function CoffeeCard({ coffee, handleShow }) {
           <Card.Header>
             <Card.Title>{name}</Card.Title> 
           </Card.Header>
-            
             <Card.Img id={coffee.id} onClick={handleShow} variant="top" src={image} style={{maxHeight: '200px', objectFit: 'contain', padding: '10px'}}/>
-            
             <Card.Body> 
             <Link to={`roasters/${roaster.id}`}>
             <Card.Text>Roaster: {roaster.name}</Card.Text>

@@ -90,9 +90,6 @@ function handleSubmit(event) {
         <img src={image} alt={name} style={{maxHeight: '400px'}}/>
         <h5>{"⭐".repeat(Math.round(average))}</h5>
         <h4><em>from {roaster}</em></h4>
-        <Button variant="light" onClick={() => history.goBack()}>
-         ⬅ Back
-        </Button>
         <Container style={{padding: "2em"}}>
         <Row className="justify-content-md-center">
           <h4>Reviews</h4>
