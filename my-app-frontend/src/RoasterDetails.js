@@ -26,7 +26,7 @@ useEffect(() => {
         <h3>{location}</h3>
         <CoffeeList coffee = {filteredCoffee}/>       
         <button onClick={() => history.goBack()}>
-         ⬅ Back
+        ⬅ Back
         </button>
         </>
     )     
