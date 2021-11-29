@@ -9,7 +9,7 @@ function Review ({ review, onDelete, toggle, setToggle }) {
     });
     function handleDelete() {
         onDelete(review)
-        fetch(`http://localhost:9292/reviews/${review.id}`, {
+        fetch(`https://cool-beans-regan-christensen.herokuapp.com/reviews/${review.id}`, {
             method: "DELETE"
         })
     }
@@ -19,7 +19,7 @@ function Review ({ review, onDelete, toggle, setToggle }) {
                 content: formData.content,
                 rating: formData.rating
               };
-              fetch(`http://localhost:9292/reviews/${review.id}`, {
+              fetch(`https://cool-beans-regan-christensen.herokuapp.com/reviews/${review.id}`, {
                 method: "PATCH",
                 headers: {
                   "Content-Type": "application/json",

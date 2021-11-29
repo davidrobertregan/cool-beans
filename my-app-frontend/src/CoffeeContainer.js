@@ -11,13 +11,13 @@ function CoffeeContainer() {
     const [roasters, setRoasters] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:9292/coffees')
+        fetch('https://cool-beans-regan-christensen.herokuapp.com/coffees')
         .then(resp => resp.json())
         .then(data => setCoffee(data))
     }, [])
 
     useEffect(() => {
-        fetch('http://localhost:9292/roasters')
+        fetch('https://cool-beans-regan-christensen.herokuapp.com/roasters')
         .then(resp => resp.json())
         .then(data => setRoasters(data))
     }, [])

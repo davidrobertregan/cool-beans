@@ -11,7 +11,7 @@ function RoasterDetails ({ coffee }) {
     let history = useHistory();
    
 useEffect(() => {
-        fetch(`http://localhost:9292/roasters/${id}`)
+        fetch(`https://cool-beans-regan-christensen.herokuapp.com/roasters/${id}`)
           .then((r) => r.json())
           .then((roaster) => {
             setRoaster(roaster)

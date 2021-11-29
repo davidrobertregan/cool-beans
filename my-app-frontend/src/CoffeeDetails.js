@@ -23,7 +23,7 @@ function CoffeeDetails ({ coffeeId }) {
         <Review key={item.id} review={item} onDelete={handleDelete} toggle = {toggle} setToggle = {setToggle}/>)
    
 useEffect(() => {
-        fetch(`http://localhost:9292/coffees/${coffeeId}`)
+        fetch(`https://cool-beans-regan-christensen.herokuapp.com/coffees/${coffeeId}`)
           .then((r) => r.json())
           .then((coffee) => {
             setCoffee(coffee);
@@ -32,7 +32,7 @@ useEffect(() => {
       }, [coffeeId]);
 
 useEffect(() => {
-    fetch(`http://localhost:9292/coffees/${coffeeId}/average_rating`)
+    fetch(`https://cool-beans-regan-christensen.herokuapp.com/coffees/${coffeeId}/average_rating`)
       .then((r) => r.json())
       .then((average) => {
         setAverage(average);
@@ -40,7 +40,7 @@ useEffect(() => {
   }, [coffeeId]);
 
 useEffect(() => {
-    fetch(`http://localhost:9292/coffees/${coffeeId}/reviews`)
+    fetch(`https://cool-beans-regan-christensen.herokuapp.com/coffees/${coffeeId}/reviews`)
       .then((r) => r.json())
       .then((reviews) => {
         setReviews(reviews);
@@ -69,7 +69,7 @@ function handleSubmit(event) {
         coffee_id: coffee.id,
       };
 
-      fetch(`http://localhost:9292/reviews`, {
+      fetch(`https://cool-beans-regan-christensen.herokuapp.com/reviews`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
