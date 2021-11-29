@@ -3,7 +3,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import {Form, FormControl, Button, Row, Col, Card, Container} from "react-bootstrap"
 import Review from './Review'
 
-function CoffeeDetails () {
+function CoffeeDetails ({ coffeeId }) {
     const [coffee, setCoffee] = useState({});
     const [roaster, setRoaster] = useState("")
     const [average, setAverage] = useState("")
@@ -16,36 +16,36 @@ function CoffeeDetails () {
     });
 
     const { name, image } = coffee
-    const id = useParams().id;
+    // const id = useParams().id;
     let history = useHistory();
 
     const coffeeReviews = reviews.map(item => 
         <Review key={item.id} review={item} onDelete={handleDelete} toggle = {toggle} setToggle = {setToggle}/>)
    
 useEffect(() => {
-        fetch(`http://localhost:9292/coffees/${id}`)
+        fetch(`http://localhost:9292/coffees/${coffeeId}`)
           .then((r) => r.json())
           .then((coffee) => {
             setCoffee(coffee);
             setRoaster(coffee.roaster.name)
           });
-      }, [id]);
+      }, [coffeeId]);
 
 useEffect(() => {
-    fetch(`http://localhost:9292/coffees/${id}/average_rating`)
+    fetch(`http://localhost:9292/coffees/${coffeeId}/average_rating`)
       .then((r) => r.json())
       .then((average) => {
         setAverage(average);
       });
-  }, [id]);
+  }, [coffeeId]);
 
 useEffect(() => {
-    fetch(`http://localhost:9292/coffees/${id}/reviews`)
+    fetch(`http://localhost:9292/coffees/${coffeeId}/reviews`)
       .then((r) => r.json())
       .then((reviews) => {
         setReviews(reviews);
       });
-  }, [id, toggle]);
+  }, [coffeeId, toggle]);
 
   function handleDelete(deletedReview) {
     const updatedReviews = reviews.filter(item => item.id !== deletedReview.id)
@@ -90,9 +90,6 @@ function handleSubmit(event) {
         <img src={image} alt={name} style={{maxHeight: '400px'}}/>
         <h5>{"⭐".repeat(Math.round(average))}</h5>
         <h4><em>from {roaster}</em></h4>
-        <Button variant="light" onClick={() => history.goBack()}>
-         ⬅ Back
-        </Button>
         <Container style={{padding: "2em"}}>
         <Row className="justify-content-md-center">
           <h4>Reviews</h4>
@@ -106,7 +103,7 @@ function handleSubmit(event) {
           <Form style={{padding: "1em"}} onSubmit = {handleSubmit}>
                 <Row>
                     <Col>
-                        <FormControl type = "text" value={formData.content} onChange={handleChange} name="content" placeholder="Ginny Weasly says..."/>
+                        <FormControl type = "text" value={formData.content} onChange={handleChange} name="content" placeholder="Helga Hufflepuff says..."/>
                     </Col>
                     <Col md="auto">
                         <Form.Label>⭐️</Form.Label>

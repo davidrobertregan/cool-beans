@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Col, Row, Button, Card, ButtonGroup, FormControl, FloatingLabel, Container, CardGroup } from "react-bootstrap"
+import { Form, Col, Row, Button, Card, ButtonGroup, FormControl } from "react-bootstrap"
 
 function Review ({ review, onDelete, toggle, setToggle }) {
     const [isEditing, setIsEditing] = useState(false);
