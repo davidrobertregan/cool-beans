@@ -15,27 +15,29 @@ function Review ({ review, onDelete, toggle, setToggle }) {
     }
     function handleEdit(event) {
             event.preventDefault()
-              const editReview = {
+                const editReview = {
                 content: formData.content,
                 rating: formData.rating
-              };
-              fetch(`https://cool-beans-regan-christensen.herokuapp.com/reviews/${review.id}`, {
+            };
+            fetch(`https://cool-beans-regan-christensen.herokuapp.com/reviews/${review.id}`, {
                 method: "PATCH",
                 headers: {
-                  "Content-Type": "application/json",
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify(editReview),
-              })
+            })
                 .then((r) => r.json())
                 .then(setToggle(!toggle));
                 setIsEditing((isEditing) => !isEditing);
             }
+
         function handleChange(event) {
             setFormData({
                 ...formData,
                 [event.target.name]: event.target.value,
             });
         }
+        
     return (
     <>
         <Card style={{ maxWidth:"35em", margin: ".25em"}}>

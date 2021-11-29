@@ -103,7 +103,7 @@ function handleSubmit(event) {
           <Form style={{padding: "1em"}} onSubmit = {handleSubmit}>
                 <Row>
                     <Col>
-                        <FormControl type = "text" value={formData.content} onChange={handleChange} name="content" placeholder="Helga Hufflepuff says..."/>
+                        <FormControl type = "text" value={formData.content} onChange={handleChange} name="content" placeholder="Write a comment..."/>
                     </Col>
                     <Col md="auto">
                         <Form.Label>⭐️</Form.Label>
