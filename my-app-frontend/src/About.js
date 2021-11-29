@@ -15,15 +15,23 @@ function About () {
             <Container bg='primary' className='p-1'>
                 <h3>Meet the Creators</h3>
                 <div>
-                    <Figure>
+                    <Figure className='p-3'>
                         <Figure.Image
-                            src="https://static.wixstatic.com/media/065e6b_dd1a8624bd5b40c9848aeec671ed811b.png/v1/fit/w_936%2Ch_733%2Cal_c/file.png"
+                            src="https://media-exp1.licdn.com/dms/image/C4E03AQFWyS5Gv7ZE0A/profile-displayphoto-shrink_800_800/0/1614719833892?e=1643846400&v=beta&t=95Ntw_a9HCjfDo5R6NIRoExb-GwbnMeM0os2O2GPNA8"
                             thumbnail
-                            width={250}/>
+                            width={200}/>
+                        <Figure.Caption>
+                            David Regan
+                        </Figure.Caption>
+                    </Figure>
+                    <Figure className='p-3'>
                         <Figure.Image
-                            src="http://i.imgur.com/psBBZIV.png"
+                            src="https://ca.slack-edge.com/T02MD9XTF-U025DNXMGT1-4563e47e63e5-512"
                             thumbnail
-                            width={210}/>
+                            width={200}/>
+                        <Figure.Caption>
+                            Nick Christensen
+                        </Figure.Caption>
                     </Figure>
                 </div>
             </Container>
