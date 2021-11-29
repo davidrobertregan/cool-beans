@@ -30,7 +30,7 @@ function About () {
                             thumbnail
                             width={200}/>
                         <Figure.Caption>
-                            Nick Christensen
+                            Nicholas Christensen
                         </Figure.Caption>
                     </Figure>
                 </div>
