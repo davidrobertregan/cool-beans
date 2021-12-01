@@ -8,7 +8,7 @@ function CoffeeCard({ coffee, handleShow }) {
     const { name, image, roaster, id } = coffee
 
     useEffect(() => {
-        fetch(`https://cool-beans-regan-christensen.herokuapp.com/${id}/average_rating`)
+        fetch(`https://cool-beans-regan-christensen.herokuapp.com/coffees/${id}/average_rating`)
           .then((r) => r.json())
           .then((average) => {
             setAverage(average);

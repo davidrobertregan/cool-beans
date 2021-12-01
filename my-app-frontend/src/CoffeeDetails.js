@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import {Form, FormControl, Button, Row, Col, Card, Container} from "react-bootstrap"
 import Review from './Review'
 
@@ -20,8 +20,8 @@ function CoffeeDetails ({ coffeeId }) {
     let history = useHistory();
 
     const coffeeReviews = reviews.map(item => 
-        <Review key={item.id} review={item} onDelete={handleDelete} toggle = {toggle} setToggle = {setToggle}/>)
-   
+        <Review key={item.id} review={item} onDelete={deleteReview} toggle = {toggle} setToggle = {setToggle}/>)
+
 useEffect(() => {
         fetch(`https://cool-beans-regan-christensen.herokuapp.com/coffees/${coffeeId}`)
           .then((r) => r.json())
@@ -45,10 +45,15 @@ useEffect(() => {
       .then((reviews) => {
         setReviews(reviews);
       });
-  }, [coffeeId, toggle]);
+  }, [coffeeId]);
 
-  function handleDelete(deletedReview) {
+  function deleteReview(deletedReview) {
     const updatedReviews = reviews.filter(item => item.id !== deletedReview.id)
+    setReviews(updatedReviews)
+  }
+
+  function addReview(newReview) {
+    const updatedReviews = [...reviews, newReview]
     setReviews(updatedReviews)
   }
 
@@ -68,16 +73,15 @@ function handleSubmit(event) {
         drinker_id: 2,
         coffee_id: coffee.id,
       };
-
       fetch(`https://cool-beans-regan-christensen.herokuapp.com/reviews`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(newReview),
-      })
-        .then((r) => r.json())
-        .then(setToggle(!toggle));
+      }).then(r => r.json())
+        .then(review => addReview(review))
+        
         setFormData({
           content:"",
           rating:""
