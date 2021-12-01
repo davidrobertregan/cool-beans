@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from 'react-router-dom';
 import {Form, FormControl, Button, Row, Col, Card, Container} from "react-bootstrap"
 import Review from './Review'
 
 function CoffeeDetails ({ coffeeId }) {
+    
     const [coffee, setCoffee] = useState({});
     const [roaster, setRoaster] = useState("")
     const [average, setAverage] = useState("")
     const [reviews, setReviews] = useState([])
-    const [toggle, setToggle] = useState(true)
 
     const [formData, setFormData] = useState ({
         content:"",
@@ -16,11 +15,9 @@ function CoffeeDetails ({ coffeeId }) {
     });
 
     const { name, image } = coffee
-    // const id = useParams().id;
-    let history = useHistory();
 
     const coffeeReviews = reviews.map(item => 
-        <Review key={item.id} review={item} onDelete={deleteReview} editReview={editReview} toggle = {toggle} setToggle = {setToggle}/>)
+        <Review key={item.id} review={item} onDelete={deleteReview} editReview={editReview}/>)
 
 useEffect(() => {
         fetch(`https://cool-beans-regan-christensen.herokuapp.com/coffees/${coffeeId}`)
@@ -95,10 +92,10 @@ function handleSubmit(event) {
                 
       return (
         <Container fluid style={{padding:"2em"}}>
-        <h2>{name}</h2>
-        <img src={image} alt={name} style={{maxHeight: '400px'}}/>
-        <h5>{"⭐".repeat(Math.round(average))}</h5>
-        <h4><em>from {roaster}</em></h4>
+          <h2>{name}</h2>
+          <img src={image} alt={name} style={{maxHeight: '400px'}}/>
+          <h5>{"⭐".repeat(Math.round(average))}</h5>
+          <h4><em>from {roaster}</em></h4>
         <Container style={{padding: "2em"}}>
         <Row className="justify-content-md-center">
           <h4>Reviews</h4>

@@ -7,13 +7,15 @@ function Review ({ review, onDelete, editReview }) {
         content: review.content,
         rating: review.rating
     });
+
     function handleDelete() {
         onDelete(review)
         fetch(`https://cool-beans-regan-christensen.herokuapp.com/reviews/${review.id}`, {
             method: "DELETE"
         })
     }
-    function handleEdit(event) {
+    
+    function handleSubmit(event) {
             event.preventDefault()
                 const newReview = {
                 content: formData.content,
@@ -46,7 +48,7 @@ function Review ({ review, onDelete, editReview }) {
                 </Col>
             </Row>
             {isEditing ?
-            <Form onSubmit = {handleEdit}>
+            <Form onSubmit={handleSubmit}>
                 <Row>
                     <Col>
                         <FormControl type = "text" value={formData.content} onChange={handleChange} name="content" />
@@ -75,7 +77,6 @@ function Review ({ review, onDelete, editReview }) {
                 </Col>
             </Row>}
         </Card>
-        
     </>
     )
 }

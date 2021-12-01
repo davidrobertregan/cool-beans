@@ -9,7 +9,7 @@ function RoasterDetails ({ coffee }) {
     const { name, image, location, url } = roaster
     const id = useParams().id;
     let history = useHistory();
-   
+
 useEffect(() => {
         fetch(`https://cool-beans-regan-christensen.herokuapp.com/roasters/${id}`)
           .then((r) => r.json())
