@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form, Col, Row, Button, Card, ButtonGroup, FormControl } from "react-bootstrap"
 
-function Review ({ review, onDelete, onAdd, toggle, setToggle }) {
+function Review ({ review, onDelete, editReview }) {
     const [isEditing, setIsEditing] = useState(false);
     const [formData, setFormData] = useState ({
         content: review.content,
@@ -15,7 +15,7 @@ function Review ({ review, onDelete, onAdd, toggle, setToggle }) {
     }
     function handleEdit(event) {
             event.preventDefault()
-                const editReview = {
+                const newReview = {
                 content: formData.content,
                 rating: formData.rating
             };
@@ -24,9 +24,9 @@ function Review ({ review, onDelete, onAdd, toggle, setToggle }) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(editReview),
-            })
-                setToggle(!toggle);
+                body: JSON.stringify(newReview),
+            }).then(r => r.json())
+            .then(review => editReview(review))
                 setIsEditing((isEditing) => !isEditing);
             }
 

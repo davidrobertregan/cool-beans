@@ -20,7 +20,7 @@ function CoffeeDetails ({ coffeeId }) {
     let history = useHistory();
 
     const coffeeReviews = reviews.map(item => 
-        <Review key={item.id} review={item} onDelete={deleteReview} toggle = {toggle} setToggle = {setToggle}/>)
+        <Review key={item.id} review={item} onDelete={deleteReview} editReview={editReview} toggle = {toggle} setToggle = {setToggle}/>)
 
 useEffect(() => {
         fetch(`https://cool-beans-regan-christensen.herokuapp.com/coffees/${coffeeId}`)
@@ -55,6 +55,11 @@ useEffect(() => {
   function addReview(newReview) {
     const updatedReviews = [...reviews, newReview]
     setReviews(updatedReviews)
+  }
+
+  function editReview(review) {
+    let reviewsArr = reviews.filter(r => r.id != review.id)
+    setReviews([...reviewsArr, review].sort((a, b) => a.id - b.id))
   }
 
   function handleChange(event) {
