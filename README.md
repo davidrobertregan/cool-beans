@@ -8,5 +8,5 @@ https://cool-beans-regan-christensen.netlify.app/
 Backend Repo
 https://github.com/davidrobertregan/cool-beans-backend
 
-#Cool Beans
+# Cool Beans
 Application that allows coffee connoisseurs to discover new coffees  follow and comment on their favorite coffees and roasters. 
