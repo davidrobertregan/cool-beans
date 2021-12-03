@@ -1,4 +1,4 @@
-# Got two minutes? 
+# Cool Beans! 
 Watch the demo: 
 https://www.loom.com/share/814ac5d67fbd489e90d40c85f292e85f
 
