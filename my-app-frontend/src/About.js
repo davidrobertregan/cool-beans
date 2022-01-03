@@ -17,7 +17,7 @@ function About () {
                 <div>
                     <Figure className='p-3'>
                         <Figure.Image
-                            src="https://media-exp1.licdn.com/dms/image/C4E03AQFWyS5Gv7ZE0A/profile-displayphoto-shrink_800_800/0/1614719833892?e=1643846400&v=beta&t=95Ntw_a9HCjfDo5R6NIRoExb-GwbnMeM0os2O2GPNA8"
+                            src="https://res.cloudinary.com/do4zijkje/image/upload/v1641247811/1640102957686_pnsax2.jpg"
                             thumbnail
                             width={200}/>
                         <Figure.Caption>
